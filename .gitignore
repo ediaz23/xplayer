@@ -1,3 +1,11 @@
 /.project
 *.in
 autom4te.cache/
+/build-aux/
+libtool
+configure
+m4/
+aclocal.m4
+config.log
+config.lt
+config.h.in~
