@@ -2,14 +2,11 @@ FROM gcc:11-bullseye
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
-    pkg-config \
-    autoconf \
-    automake \
+    pkg-config autoconf automake autoconf-archive cmake meson ninja-build make \
     libtool \
     gettext \
     intltool \
     python3 \
-    make \
     gtk-doc-tools \
     yelp-tools \
     itstool \
@@ -30,7 +27,9 @@ RUN apt-get install -y --no-install-recommends \
     libxml2-dev \
     libx11-dev \
     libsm-dev \
-    libice-dev \
+    libice-dev libzeitgeist-2.0-dev \
+    libsoup2.4-dev ibquvi-0.9-dev libarchive-dev libgcrypt20-dev libgmime-3.0-dev \
+    dpkg-dev debhelper build-essential fakeroot devscripts cdbs gnome-pkg-tools libsoup-gnome2.4-dev libglib2.0-doc \
     valac \
     libpython3-dev \
     python3-gi \
@@ -42,6 +41,11 @@ RUN apt-get install -y --no-install-recommends \
     libclutter-gst-3.0-dev \
     gsettings-desktop-schemas-dev
 RUN apt-get install sudo passwd 
+
+COPY libs/ /tmp/libs/
+
+RUN ls /tmp/libs/*.deb >/dev/null 2>&1 && apt install -f -y /tmp/libs/*.deb 
+RUN rm -f /tmp/libs/*.deb
 RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /work

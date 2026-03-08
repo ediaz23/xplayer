@@ -9,3 +9,5 @@ aclocal.m4
 config.log
 config.lt
 config.h.in~
+**/.deps/
+**/.libs/
