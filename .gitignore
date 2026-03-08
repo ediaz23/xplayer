@@ -1,13 +1,69 @@
-/.project
-*.in
+# IDE
+.project
+
+# Autotools / configure
 autom4te.cache/
-/build-aux/
-libtool
-configure
-m4/
+build-aux/
 aclocal.m4
+configure
+libtool
 config.log
+config.status
 config.lt
+config.h
 config.h.in~
+stamp-h1
+
+# Generated m4
+m4/
+
+# Generated build outputs
+**/Makefile
 **/.deps/
 **/.libs/
+**/.dirstamp
+**.intltool-merge-cache**
+
+# Generated translation/docs/pkg-config
+po/POTFILES
+po/stamp-it
+docs/reference/version.xml
+
+data/*.desktop
+data/*.thumbnailer
+data/xplayer.pc
+data/nautilus-audio-mime-types.h
+data/xplayer-mime-types.h
+data/xplayer-uri-schemes.h
+data/xplayerMimeTypes.js
+data/org.x.player.*
+!data/org.x.player.gschema.xml.in.in
+
+# Generic generated templates
+*.in
+*.la
+*.lo
+*.o
+*.gmo
+*.mo
+*.1
+*.plugin
+*.stamp
+help/*/*.docbook
+help/*/*.xml
+
+# binaries
+src/backend/bvw-test
+src/xplayer
+src/xplayer-audio-preview
+src/xplayer-video-thumbnailer
+src/Xplayer-1.0.gir
+src/Xplayer-1.0.typelib
+src/plugins/*/*.xml
+src/plugins/*/*.valid
+
+# vala plugins
+src/plugins/zeitgeist-dp/*.c
+src/plugins/sample-vala/*.c
+src/plugins/rotation/*.c
+
