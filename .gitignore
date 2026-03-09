@@ -23,6 +23,7 @@ m4/
 **/.libs/
 **/.dirstamp
 **.intltool-merge-cache**
+**/__pycache__
 
 # Generated translation/docs/pkg-config
 po/POTFILES
