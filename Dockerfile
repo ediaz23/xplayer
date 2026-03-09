@@ -30,6 +30,7 @@ RUN apt-get install -y --no-install-recommends \
     libice-dev libzeitgeist-2.0-dev \
     libsoup2.4-dev ibquvi-0.9-dev libarchive-dev libgcrypt20-dev libgmime-3.0-dev \
     dpkg-dev debhelper build-essential fakeroot devscripts cdbs gnome-pkg-tools libsoup-gnome2.4-dev libglib2.0-doc \
+    gnome-icon-theme gstreamer1.0-plugins-base-apps libbluetooth-dev libgdata-dev libgdk-pixbuf2.0-dev libxxf86vm-dev \
     valac \
     libpython3-dev \
     python3-gi \

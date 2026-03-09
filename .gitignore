@@ -69,3 +69,4 @@ src/plugins/zeitgeist-dp/*.c
 src/plugins/sample-vala/*.c
 src/plugins/rotation/*.c
 
+/bin/

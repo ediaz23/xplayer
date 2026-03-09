@@ -5,6 +5,7 @@ usr/lib/xplayer/plugins/autoload-subtitles
 usr/lib/xplayer/plugins/brasero-disc-recorder
 usr/lib/xplayer/plugins/chapters
 usr/lib/xplayer/plugins/dbus
+usr/lib/xplayer/plugins/grilo
 usr/lib/xplayer/plugins/im-status
 usr/lib/xplayer/plugins/lirc
 usr/lib/xplayer/plugins/media-player-keys
