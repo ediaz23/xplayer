@@ -9,7 +9,6 @@ RUN apt-get install -y --no-install-recommends \
     python3 \
     gtk-doc-tools \
     yelp-tools \
-    itstool \
     libglib2.0-dev \
     libgtk-3-dev \
     libgirepository1.0-dev \
@@ -29,12 +28,10 @@ RUN apt-get install -y --no-install-recommends \
     libsm-dev \
     libice-dev libzeitgeist-2.0-dev \
     libsoup2.4-dev ibquvi-0.9-dev libarchive-dev libgcrypt20-dev libgmime-3.0-dev \
-    dpkg-dev debhelper build-essential fakeroot devscripts cdbs gnome-pkg-tools libsoup-gnome2.4-dev libglib2.0-doc \
+    dpkg-dev debhelper fakeroot devscripts cdbs gnome-pkg-tools libsoup-gnome2.4-dev libglib2.0-doc \
     gnome-icon-theme gstreamer1.0-plugins-base-apps libbluetooth-dev libgdata-dev libgdk-pixbuf2.0-dev libxxf86vm-dev \
     valac \
     libpython3-dev \
-    python3-gi \
-    pylint \
     libgrilo-0.3-dev \
     liblircclient-dev \
     python3-gi \
