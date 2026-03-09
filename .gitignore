@@ -38,6 +38,7 @@ data/xplayer-uri-schemes.h
 data/xplayerMimeTypes.js
 data/org.x.player.*
 !data/org.x.player.gschema.xml.in.in
+data/gschemas.compiled
 
 # Generic generated templates
 *.in
