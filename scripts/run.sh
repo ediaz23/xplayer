@@ -30,7 +30,7 @@ docker run --name "$CONTAINER_NAME" -e DISPLAY=$DISPLAY \
   -e GSETTINGS_SCHEMA_DIR=/work/data \
   -e G_MESSAGES_DEBUG=all \
   -e PULSE_SERVER=unix:/run/user/1000/pulse/native \
-  -e XDG_RUNTIME_DIR=/run/user/1000 \
-  --privileged --shm-size=3g -it xplayer-builder ./xplayer
+  -e XDG_RUNTIME_DIR=/home/xplayerbuilder/.runtime \
+  --privileged --shm-size=3g -it xplayer-builder ./xplayer --debug
 
 cleanup

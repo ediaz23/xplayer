@@ -15,6 +15,8 @@ RUN apt-get install -y --no-install-recommends \
     gobject-introspection \
     libgstreamer1.0-dev \
     libgstreamer-plugins-base1.0-dev \
+    gstreamer1.0-libav \
+    gstreamer1.0-plugins-bad \
     gstreamer1.0-tools \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
@@ -51,6 +53,10 @@ WORKDIR /work
 RUN useradd -m -s /bin/bash xplayerbuilder
 RUN usermod -aG sudo xplayerbuilder
 RUN echo 'xplayerbuilder:123456' | chpasswd
+
+RUN mkdir -p /home/xplayerbuilder/.runtime
+RUN chown -R xplayerbuilder:xplayerbuilder /home/xplayerbuilder
+
 USER xplayerbuilder
 
 CMD ["bash"]

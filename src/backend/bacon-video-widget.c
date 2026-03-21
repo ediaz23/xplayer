@@ -5568,7 +5568,28 @@ bacon_video_widget_initable_init (GInitable     *initable,
   bvw->priv->play = element_make_or_warn ("playbin", "play");
   bvw->priv->audio_pitchcontrol = element_make_or_warn ("scaletempo", "scaletempo");
 #ifdef HAVE_CLUTTER_GST_3
-  video_sink = clutter_gst_video_sink_new ();
+  GstElement *video_bin, *video_convert, *video_filter;
+  GstPad *video_pad;
+  GstCaps *video_caps;
+  GstElement *clutter_sink;
+
+  clutter_sink = GST_ELEMENT (clutter_gst_video_sink_new ());
+  video_convert = element_make_or_warn ("videoconvert", "video-convert");
+  video_filter = element_make_or_warn ("capsfilter", "video-filter");
+  video_bin = gst_bin_new ("video-sink-bin");
+
+  video_caps = gst_caps_from_string ("video/x-raw,format=RGBA");
+  g_object_set (video_filter, "caps", video_caps, NULL);
+  gst_caps_unref (video_caps);
+
+  gst_bin_add_many (GST_BIN (video_bin), video_convert, video_filter, clutter_sink, NULL);
+  gst_element_link_many (video_convert, video_filter, clutter_sink, NULL);
+
+  video_pad = gst_element_get_static_pad (video_convert, "sink");
+  gst_element_add_pad (video_bin, gst_ghost_pad_new ("sink", video_pad));
+  gst_object_unref (video_pad);
+
+  video_sink = GST_ELEMENT (video_bin);
 #else
   video_sink = element_make_or_warn ("cluttersink", "video-sink");
 #endif
@@ -5618,7 +5639,7 @@ bacon_video_widget_initable_init (GInitable     *initable,
 
   /* Video sink, with aspect frame */
 #ifdef HAVE_CLUTTER_GST_3
-  bvw->priv->texture = g_object_new (CLUTTER_TYPE_ACTOR, "content", g_object_new (CLUTTER_GST_TYPE_CONTENT, "sink", video_sink, NULL), "name", "texture", NULL);
+  bvw->priv->texture = g_object_new (CLUTTER_TYPE_ACTOR, "content", g_object_new (CLUTTER_GST_TYPE_CONTENT, "sink", clutter_sink, NULL), "name", "texture", NULL);
 #else
   bvw->priv->texture = g_object_new (CLUTTER_TYPE_TEXTURE, "disable-slicing", TRUE, NULL);
   g_object_set (G_OBJECT (video_sink), "texture", bvw->priv->texture, NULL);
