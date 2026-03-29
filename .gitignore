@@ -70,3 +70,4 @@ src/plugins/sample-vala/*.c
 src/plugins/rotation/*.c
 
 /bin/
+/configure~

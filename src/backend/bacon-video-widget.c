@@ -2156,6 +2156,8 @@ bvw_bus_message_cb (GstBus * bus, GstMessage * message, BaconVideoWidget *bvw)
     case GST_MESSAGE_SEGMENT_START:
     case GST_MESSAGE_SEGMENT_DONE:
     case GST_MESSAGE_LATENCY:
+      gst_bin_recalculate_latency (GST_BIN (bvw->priv->play));
+      break;
     case GST_MESSAGE_ASYNC_START:
     case GST_MESSAGE_REQUEST_STATE:
     case GST_MESSAGE_STEP_START:
@@ -5593,7 +5595,10 @@ bacon_video_widget_initable_init (GInitable     *initable,
 #else
   video_sink = element_make_or_warn ("cluttersink", "video-sink");
 #endif
-  audio_sink = element_make_or_warn ("autoaudiosink", "audio-sink");
+  if (gst_element_factory_find ("pipewiresink") != NULL)
+      audio_sink = element_make_or_warn ("pipewiresink", "audio-sink");
+  else
+      audio_sink = element_make_or_warn ("autoaudiosink", "audio-sink");
 
   if (!bvw->priv->play ||
       !bvw->priv->audio_pitchcontrol ||

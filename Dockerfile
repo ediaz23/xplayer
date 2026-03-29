@@ -1,4 +1,4 @@
-FROM gcc:11-bullseye
+FROM gcc:13-bookworm
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
@@ -40,7 +40,7 @@ RUN apt-get install -y --no-install-recommends \
     python-gi-dev \
     libclutter-gst-3.0-dev \
     gsettings-desktop-schemas-dev
-RUN apt-get install sudo passwd 
+RUN apt-get install -y --no-install-recommends sudo passwd 
 
 COPY libs/ /tmp/libs/
 
